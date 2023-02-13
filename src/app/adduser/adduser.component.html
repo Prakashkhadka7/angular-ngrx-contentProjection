@@ -1,0 +1,28 @@
+<div class="table-container">
+  <div class="search-container">
+    <input (input)="searchUsers($event)" type="text" placeholder="Search by name or email">
+    <button class="add-button" (click)="openDialog()">Add New User</button>
+  </div>
+  <app-list-users [searchTerm]="searchTerm"></app-list-users>
+</div>
+
+<ng-template #dialogTemplate let-close="close">
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <h2 mat-dialog-title>Add New User</h2>
+    <mat-dialog-content>
+      <mat-form-field>
+        <input matInput placeholder="Full Name" formControlName="fullName">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Email Address" formControlName="emailAddress">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="User Info" formControlName="userInfo">
+      </mat-form-field>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button mat-button class="submit-button" type="submit">Add</button>
+      <button mat-button mat-dialog-close class="cancel-button" type="button">Cancel</button>
+    </mat-dialog-actions>
+  </form>
+</ng-template>
