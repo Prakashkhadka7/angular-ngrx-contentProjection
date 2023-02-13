@@ -1,0 +1,16 @@
+<table>
+  <thead>
+    <tr>
+      <th>Full Name</th>
+      <th>Email Address</th>
+      <th>User Info</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of commonService.filteredUsers$ | async" (click)="routeTo(user.id)">
+      <td>{{ user.fullName }}</td>
+      <td>{{ user.emailAddress }}</td>
+      <td>{{ user.userInfo }}</td>
+    </tr>
+  </tbody>
+</table>
